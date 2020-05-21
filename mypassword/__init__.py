@@ -1,3 +1,3 @@
-from .src.password import Password
+from .src.password import Password, PasswordLevel
 
-__all__ = ['Password']
+__all__ = ['Password', 'PasswordLevel']
