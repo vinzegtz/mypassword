@@ -25,9 +25,7 @@ class Password:
         if self.length < 8:
             raise Exception('The length cannot be less than 8')
         
-        for i in available_levels:
-            random_string.append(self.__get_level_char(i))
-
+        random_string = [self.__get_level_char(i) for i in available_levels]
         random.shuffle(random_string)
 
         for i in range(self.length - self.level):
