@@ -3,12 +3,12 @@ from distutils.core import setup
 setup(
     name = 'mypassword',
     packages = ['mypassword'],
-    version = '0.0.1',
+    version = '0.0.2',
     description = 'Tools for generating strong passwords',
     author = 'Vicente Gutiérrez',
     author_email = 'vinzegtz@gmail.com',
     url = 'https://github.com/vinzegtz/mypassword',
-    download_url = 'https://github.com/vinzegtz/mypassword/archive/v0.0.1-beta.tar.gz',
+    download_url = 'https://github.com/vinzegtz/mypassword/archive/v0.0.2-beta.tar.gz',
     keywords = ['password', 'pass', 'password-manager'],
     classifiers = [
         'Development Status :: 4 - Beta',
