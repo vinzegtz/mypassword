@@ -8,10 +8,14 @@ class PasswordLevel:
     FOUR = 4
 
 class Password:
-    def __init__(self, length=8, level=PasswordLevel.ONE):
-        self.length = length
-        self.level = level
-        self.password = self.__get_random_string()
+    def __init__(self, length=8, level=PasswordLevel.ONE, password=None):
+        if password:
+            self.__verify_invalid_chars(password)
+            self.level, self.length, self.password = self.__identify_password(password)
+        else:
+            self.length = length
+            self.level = level
+            self.password = self.__get_random_string()
     
 
     def __str__(self):
@@ -84,3 +88,29 @@ class Password:
                 raise Exception(f'The level {i} does not exists')
         
         return list(set(levels))
+    
+
+    def __verify_invalid_chars(self, password):
+        password_set = set(password)
+
+        if password_set & set(string.whitespace):
+            raise Exception('The password contains illegal characters')
+
+
+    def __identify_password(self, password):
+        level = 0
+        length = len(password)
+        
+        password_set = set(password)
+        results = [
+            password_set & set(string.ascii_lowercase),
+            password_set & set(string.ascii_uppercase),
+            password_set & set(string.digits),
+            password_set & set(string.punctuation)
+        ]
+
+        for result in results:
+            if result:
+                level += 1
+        
+        return level, length, password
