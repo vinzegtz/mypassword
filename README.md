@@ -1,6 +1,6 @@
 # MyPassword Package
 
-### Installation
+## Installation
 mypassword requires Python 3.* to work
 
 ```sh
@@ -12,6 +12,7 @@ or
 $ pip3 install mypassword
 ```
 
+## Password
 ### Default Use
 ```python
 from mypassword import Password
@@ -57,3 +58,16 @@ password_level_four = Password(length=32, level=PasswordLevel.FOUR)
 print(password_level_one)   # Ex. print enxhyrpgwecyboyn  
 print(password_level_four)  # Ex. print lX7a`DMN$e\09<i|0U93r6Lj7bg1m0Z/
 ```
+
+## Pasworify
+### Default use
+```python
+from mypassword import Passworify
+
+my_string = 'my secure password'
+passworify = Passworify(my_string)
+passworify.parse()
+print(passworify.password)
+```
+
+`passworify.parse()` converts the string into a `Password` instance. The object is in the attribute `passworify.password`
