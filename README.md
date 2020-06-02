@@ -67,7 +67,7 @@ from mypassword import Passworify
 my_string = 'my secure password'
 passworify = Passworify(my_string)
 passworify.parse()
-print(passworify.password)
+print(passworify.password) # Ex. print My+SEcUR3!PASSw0rd
 ```
 
 `passworify.parse()` converts the string into a `Password` instance. The object is in the attribute `passworify.password`
