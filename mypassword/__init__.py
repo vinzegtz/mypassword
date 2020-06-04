@@ -1,4 +1,4 @@
-from .src.password import Password, PasswordLevel
-from .src.passworify import Passworify
+from .password import Password, PasswordLevel
+from .passworify import Passworify
 
 __all__ = ['Password', 'PasswordLevel', 'Passworify']
