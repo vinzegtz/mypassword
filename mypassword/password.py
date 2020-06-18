@@ -16,6 +16,7 @@ class PasswordLevel:
     THREE = 3
     FOUR = 4
 
+
 class Password:
     '''Class to representate a password
     
@@ -38,10 +39,10 @@ class Password:
             self.length = length
             self.level = level
             self.password = self.__get_random_string()
-    
+
     def __str__(self):
         return f'{self.password}'
-    
+
     def __get_random_string(self):
         random_string = []
         available_levels = self.__get_available_levels()
@@ -57,7 +58,7 @@ class Password:
             random_string.append(self.__get_level_char(next_char_level))
 
         return ''.join(random_string)
-    
+
     def __get_level_one_char(self):
         return random.choice(string.ascii_lowercase)
 
@@ -69,7 +70,7 @@ class Password:
 
     def __get_level_four_char(self):
         return random.choice(string.punctuation)
-    
+
     def __get_level_char(self, level):
         char = ''
 
@@ -102,7 +103,7 @@ class Password:
                 raise Exception(f'The level {i} does not exists')
         
         return list(set(levels))
-    
+
     def __verify_invalid_chars(self, password):
         password_set = set(password)
 
