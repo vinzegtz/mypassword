@@ -2,12 +2,34 @@ import random
 import string
 
 class PasswordLevel:
+    '''Class to define the levels of security for a password
+    
+    There are four levels:
+    ONE
+    TWO
+    THREE
+    FOUR
+    '''
+
     ONE = 1
     TWO = 2
     THREE = 3
     FOUR = 4
 
 class Password:
+    '''Class to representate a password
+    
+    Atributtes
+    ----------
+    level : int, optional
+        The password security level. You can use a constant from PasswordLevel. (Default is PasswordLevel.ONE)
+    length : int, optional
+        The length of the password. (Default is 8)
+    password: str, optional
+        The password string. You can generate one or use an existing one. (Defualt is None)
+        If you don't pass the param, a random password will be created.
+    '''
+
     def __init__(self, length=8, level=PasswordLevel.ONE, password=None):
         if password:
             self.__verify_invalid_chars(password)
@@ -17,11 +39,9 @@ class Password:
             self.level = level
             self.password = self.__get_random_string()
     
-
     def __str__(self):
         return f'{self.password}'
     
-
     def __get_random_string(self):
         random_string = []
         available_levels = self.__get_available_levels()
@@ -38,23 +58,18 @@ class Password:
 
         return ''.join(random_string)
     
-
     def __get_level_one_char(self):
         return random.choice(string.ascii_lowercase)
-
 
     def __get_level_two_char(self):
         return random.choice(string.ascii_uppercase)
 
-
     def __get_level_three_char(self):
         return random.choice(string.digits)
-
 
     def __get_level_four_char(self):
         return random.choice(string.punctuation)
     
-
     def __get_level_char(self, level):
         char = ''
 
@@ -70,7 +85,6 @@ class Password:
             raise Exception(f'The level {level} does not exists')
         
         return char
-
 
     def __get_available_levels(self):
         levels = []
@@ -89,13 +103,11 @@ class Password:
         
         return list(set(levels))
     
-
     def __verify_invalid_chars(self, password):
         password_set = set(password)
 
         if password_set & set(string.whitespace):
             raise Exception('The password contains illegal characters')
-
 
     def __identify_password(self, password):
         level = 0

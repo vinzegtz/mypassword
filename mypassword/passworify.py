@@ -4,13 +4,26 @@ import string
 from .password import Password
 
 class Passworify:
-    __vowels = {'a': '4', 'e': '3', 'i': '1', 'o': '0'}
+    '''Class to convert a string to a secure password
+    
+    Atributtes
+    ----------
+    string_to_password : str
+        String to convert in a secure password
+    password : Password
+        Password instance that contains the password generated
+    
+    Methods
+    _______
+    parse()
+        Converts the string to a Password object
+    '''
 
+    __vowels = {'a': '4', 'e': '3', 'i': '1', 'o': '0'}
 
     def __init__(self, string_to_password):
         self.string_to_password = string_to_password
         self.password = None
-
 
     def parse(self):
         tmp_password_string = self.string_to_password
@@ -33,7 +46,6 @@ class Passworify:
             tmp_password_string = ''.join(new_string)
         
         self.password = Password(password=tmp_password_string)
-
 
     def __is_strong_password_string(self, password_string):
         string_set = set(password_string)
